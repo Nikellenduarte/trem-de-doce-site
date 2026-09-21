@@ -147,7 +147,7 @@ export const business = {
   /* ---- Copy de versões anteriores, mantida para consulta ---- */
   welcome: {
     eyebrow: 'Bem-vindo(a)',
-    title: 'Colocando doces na mesa', // pedido do cliente em 19/09/2026 (antes: "Tudo o que importa cabe ao redor de uma mesa.")
+    title: 'Tudo o que importa cabe ao redor de uma mesa.', // voltou em 21/09/2026 (entre 19 e 21/09 foi "Colocando doces na mesa")
     paragraphs: [
       'Nós acreditamos que celebrar é reunir pessoas especiais ao redor de uma mesa — a família, os amigos e as tradições que atravessam gerações.',
       'Cada produto da Trem de Doce nasce para fazer parte desses momentos, das comemorações mais intimistas às mais grandiosas.',
