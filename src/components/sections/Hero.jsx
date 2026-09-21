@@ -25,7 +25,7 @@ export default function Hero() {
             <Button size="lg" href="#montar">
               Montar meu pedido
             </Button>
-            <Button size="lg" variant="secondary" href="#sobre">
+            <Button size="lg" href="#sobre">
               Conhecer a confeitaria
             </Button>
           </div>
