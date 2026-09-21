@@ -1,0 +1,61 @@
+# Publica o site no Cloudflare Pages a cada envio para a branch main.
+#
+# O projeto "trem-de-doce" no Cloudflare foi criado por upload direto (wrangler), e o
+# Cloudflare não permite converter esse tipo de projeto para a integração nativa com Git.
+# Por isso a publicação automática é feita por aqui: o GitHub compila o site e envia a
+# pasta dist com o wrangler. O endereço continua o mesmo: https://trem-de-doce.pages.dev
+#
+# Segredos necessários (GitHub → Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN   token com a permissão "Cloudflare Pages: Edit"
+#   CLOUDFLARE_ACCOUNT_ID  ID da conta Cloudflare
+name: Publicar no Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # permite rodar manualmente pela aba Actions
+
+concurrency:
+  group: deploy-cloudflare-pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Conferir segredos
+        id: segredos
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::warning::Segredos do Cloudflare ainda não cadastrados: nada foi publicado."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.segredos.outputs.ok == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.segredos.outputs.ok == 'true'
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        if: steps.segredos.outputs.ok == 'true'
+        run: npm ci
+
+      - name: Compilar o site
+        if: steps.segredos.outputs.ok == 'true'
+        run: npm run build
+
+      - name: Publicar no Cloudflare Pages
+        if: steps.segredos.outputs.ok == 'true'
+        run: npx --yes wrangler@4 pages deploy dist --project-name=trem-de-doce --branch=main --commit-dirty=true

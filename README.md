@@ -69,6 +69,12 @@ Gera a pasta `dist/` (estática). Pré-visualizar: `npm run preview`.
 
 ## Deploy (Cloudflare Pages)
 
+**Publicação automática:** todo envio para a branch `main` no GitHub publica o site sozinho
+(`.github/workflows/deploy.yml`: `npm ci` → `npm run build` → `wrangler pages deploy dist`). Precisa dos segredos
+`CLOUDFLARE_API_TOKEN` (permissão *Cloudflare Pages: Edit*) e `CLOUDFLARE_ACCOUNT_ID` no repositório. O projeto do
+Cloudflare foi criado por upload direto, que não pode ser convertido para a integração nativa com Git — por isso o
+deploy passa pelo GitHub Actions e o endereço continua `trem-de-doce.pages.dev`. O deploy manual abaixo segue valendo.
+
 Publicado em **https://trem-de-doce.pages.dev** (conta Cloudflare da MJDAU, projeto Pages `trem-de-doce`).
 
 Para publicar uma nova versão:
