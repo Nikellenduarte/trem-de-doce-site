@@ -1,0 +1,614 @@
+/* ============================================================
+   UI PRIMITIVES — botões, ícones, molduras de imagem, títulos de
+   seção, avisos e os controles do montador (opções, etapas, stepper)
+   ============================================================ */
+
+/* ---------- Button ---------- */
+.btn {
+  --btn-bg: var(--marsala);
+  --btn-fg: var(--offwhite);
+  --btn-bd: var(--marsala);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: var(--touch);
+  padding: 0.95rem 1.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--btn-bd);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.btn:hover {
+  --btn-bg: var(--marsala-dark);
+  --btn-bd: var(--marsala-dark);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--marsala);
+  --btn-bd: var(--color-border-strong);
+}
+
+.btn--secondary:hover {
+  --btn-bg: var(--marsala);
+  --btn-fg: var(--offwhite);
+  --btn-bd: var(--marsala);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--marsala);
+  --btn-bd: transparent;
+  padding-inline: 0.75rem;
+}
+
+.btn--ghost:hover {
+  --btn-bg: var(--color-primary-tint);
+  --btn-bd: transparent;
+}
+
+/* Link textual com sublinhado fino ("VER DETALHES") */
+.btn--link {
+  --btn-bg: transparent;
+  --btn-fg: var(--marsala);
+  --btn-bd: transparent;
+  min-height: 44px;
+  padding: 0.5rem 0;
+  border: 0;
+  border-radius: 0;
+  position: relative;
+}
+
+.btn--link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.55rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.btn--link:hover {
+  --btn-bg: transparent;
+}
+
+.btn--link:hover::after {
+  opacity: 1;
+}
+
+.btn--on-primary {
+  --btn-bg: var(--offwhite);
+  --btn-fg: var(--marsala);
+  --btn-bd: var(--offwhite);
+}
+
+.btn--on-primary:hover {
+  --btn-bg: var(--white);
+  --btn-bd: var(--white);
+}
+
+.btn--on-primary-outline {
+  --btn-bg: transparent;
+  --btn-fg: var(--offwhite);
+  --btn-bd: rgba(255, 249, 245, 0.55);
+}
+
+.btn--on-primary-outline:hover {
+  --btn-bg: rgba(255, 249, 245, 0.1);
+  --btn-bd: var(--offwhite);
+}
+
+/* O envio pelo WhatsApp usa a assinatura marsala da marca */
+.btn--whatsapp {
+  --btn-bg: var(--marsala);
+  --btn-fg: var(--offwhite);
+  --btn-bd: var(--marsala);
+}
+
+.btn--lg {
+  padding: 1.1rem 2.2rem;
+  min-height: 54px;
+}
+
+.btn--sm {
+  min-height: 42px;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.68rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn__icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+/* ---------- Icon ---------- */
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* ---------- Image frame ---------- */
+.img-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--nude);
+  border-radius: var(--radius-lg);
+  isolation: isolate;
+}
+
+.img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+
+.img-frame--ratio {
+  aspect-ratio: var(--ratio, 4 / 5);
+}
+
+.img-frame--arch {
+  border-radius: var(--radius-arch);
+}
+
+.img-frame--rounded {
+  border-radius: var(--radius-lg);
+}
+
+.img-frame--round {
+  border-radius: 50%;
+}
+
+.img-frame--square {
+  border-radius: var(--radius-md);
+}
+
+.img-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  color: var(--marsala);
+  background: var(--nude);
+}
+
+.img-placeholder__inner {
+  display: grid;
+  place-items: center;
+  gap: 0.6rem;
+}
+
+.img-placeholder .monogram {
+  width: clamp(48px, 26%, 96px);
+  opacity: 0.45;
+}
+
+.img-placeholder__label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Section heading ---------- */
+.section-heading {
+  display: grid;
+  gap: 1.1rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  max-width: 40rem;
+}
+
+.section-heading--center {
+  text-align: center;
+  margin-inline: auto;
+  justify-items: center;
+}
+
+.section-heading .display {
+  font-size: var(--text-2xl);
+}
+
+.section-heading--center .lead {
+  margin-inline: auto;
+}
+
+/* ---------- Badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  color: var(--marsala);
+  background: var(--white);
+}
+
+/* ---------- Notice ---------- */
+.notice {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.notice .icon {
+  margin-top: 0.15rem;
+  color: var(--marsala);
+}
+
+.notice--error {
+  border-color: rgba(155, 44, 44, 0.3);
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+.notice--error .icon {
+  color: currentColor;
+}
+
+.notice--success {
+  border-color: rgba(79, 107, 58, 0.3);
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.notice--info {
+  color: var(--color-text-muted);
+}
+
+.notice ul {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* ---------- Option card (montador) ---------- */
+.option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  width: 100%;
+  min-height: var(--touch);
+  padding: 1rem 2.6rem 1rem 1.1rem;
+  text-align: left;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--white);
+  color: var(--color-text);
+  transition:
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--marsala);
+}
+
+.option[aria-checked='true'],
+.option[aria-pressed='true'] {
+  border-color: var(--marsala);
+  background: var(--color-rose-pale);
+}
+
+.option:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--color-surface);
+}
+
+.option--invalid {
+  border-color: var(--color-error);
+}
+
+.option__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--brown);
+}
+
+.option__hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.option__meta {
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--marsala);
+}
+
+/* Selo do cardápio (ex.: "O mais vendido em casamentos") */
+.option__badge {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--gold);
+  color: var(--brown);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.option__check {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+  display: grid;
+  place-items: center;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.option__check .icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.4;
+  opacity: 0;
+}
+
+.option[aria-checked='true'] .option__check,
+.option[aria-pressed='true'] .option__check {
+  background: var(--marsala);
+  border-color: var(--marsala);
+  color: var(--offwhite);
+}
+
+.option[aria-checked='true'] .option__check .icon,
+.option[aria-pressed='true'] .option__check .icon {
+  opacity: 1;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.option-grid--wide {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* ---------- Step indicator ---------- */
+.steps {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  border-bottom: var(--hairline-soft);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.steps::-webkit-scrollbar {
+  display: none;
+}
+
+.step {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.5rem 0;
+  margin-bottom: -1px;
+  border-bottom: 1px solid transparent;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition:
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.step__num {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0;
+}
+
+.step--current {
+  color: var(--marsala);
+  border-bottom-color: var(--marsala);
+}
+
+.step--done {
+  color: var(--marsala);
+}
+
+.step--done .step__num {
+  background: var(--marsala);
+  border-color: var(--marsala);
+  color: var(--offwhite);
+}
+
+.step--done .step__num .icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.4;
+}
+
+.step:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* ---------- Quantity stepper ---------- */
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.stepper__btn {
+  display: grid;
+  place-items: center;
+  width: var(--touch);
+  height: var(--touch);
+  color: var(--marsala);
+  transition: background-color var(--dur) var(--ease);
+}
+
+.stepper__btn:hover:not(:disabled) {
+  background: var(--color-primary-tint);
+}
+
+.stepper__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepper__value {
+  min-width: 3.2rem;
+  padding: 0 0.25rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--brown);
+  border: 0;
+  background: transparent;
+  -moz-appearance: textfield;
+}
+
+.stepper__value::-webkit-outer-spin-button,
+.stepper__value::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stepper--sm .stepper__btn {
+  width: 42px;
+  height: 42px;
+}
+
+.stepper--sm .stepper__value {
+  min-width: 2.6rem;
+  font-size: 1.1rem;
+}
+
+/* ---------- Price ---------- */
+.price {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--marsala);
+  line-height: 1;
+}
+
+.price--unknown {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Assinatura: TD | TREM DE DOCE pela base; CONFEITARIA sob o nome ---------- */
+.lockup {
+  --name-w: clamp(200px, 60vw, 400px);
+  display: grid;
+  grid-template-columns: auto 1px var(--name-w);
+  column-gap: clamp(0.7rem, 2vw, 1.3rem);
+  align-items: end;
+  justify-content: start;
+  color: var(--marsala);
+}
+
+.lockup__mark {
+  width: calc(var(--name-w) * 0.256); /* TD ≈ 1,35× a altura das letras do nome */
+}
+
+.lockup__divider {
+  align-self: stretch;
+  background: var(--gold);
+  opacity: 0.8;
+}
+
+.lockup__name,
+.lockup__sub {
+  display: block;
+  height: auto;
+}
+
+.lockup__name {
+  width: 100%;
+}
+
+.lockup__sub {
+  grid-column: 3;
+  justify-self: center;
+  width: 37%;
+  margin-top: calc(var(--name-w) * 0.035);
+}

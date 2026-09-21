@@ -1,0 +1,94 @@
+/* ============================================================
+   DESIGN TOKENS — Trem de Doce · redesign boutique (19/09/2026)
+   Paleta oficial do redesign: marsala + off-white + nude/rosa antigo
+   + dourado suave. Distribuição alvo: 65% off-white · 20% marsala ·
+   10% nude/rosa · 5% dourado.
+   Os nomes antigos (--color-*) seguem existindo como apelidos para o
+   montador e a reserva herdarem a paleta sem reescrita.
+   ============================================================ */
+:root {
+  /* ---- Paleta ---- */
+  --marsala: #7a2638;
+  --marsala-dark: #581c2b;
+  --offwhite: #fff9f5;
+  --rose: #e7c8c8; /* rosa antigo */
+  --nude: #e8d9cf;
+  --brown: #4a2929;
+  --gold: #b89a72; /* dourado suave: apenas detalhes, nunca texto pequeno */
+  --white: #ffffff;
+
+  /* ---- Semânticas ---- */
+  --color-background: var(--offwhite);
+  --color-surface: #fbf3ee; /* off-white levemente aquecido */
+  --color-surface-strong: var(--white);
+  --color-primary: var(--marsala);
+  --color-primary-dark: var(--marsala-dark);
+  --color-text: var(--brown);
+  --color-text-muted: #7b6260; /* marrom suavizado, contraste 5,4:1 no off-white */
+  --color-text-on-primary: var(--offwhite);
+  --color-secondary: var(--marsala); /* acentos tipográficos */
+  --color-accent: var(--rose);
+  --color-border: rgba(122, 38, 56, 0.16);
+  --color-border-strong: rgba(122, 38, 56, 0.38);
+  --color-border-soft: rgba(74, 41, 41, 0.09);
+  --color-primary-tint: rgba(122, 38, 56, 0.05);
+  --color-primary-tint-strong: rgba(122, 38, 56, 0.12);
+  --color-error: #9b2c2c;
+  --color-error-bg: rgba(155, 44, 44, 0.07);
+  --color-success: #4f6b3a;
+  --color-success-bg: rgba(79, 107, 58, 0.1);
+  --color-whatsapp: #1f6f4f;
+  --color-whatsapp-dark: #185a40;
+  --color-peach: #d8a790; /* estrela do logo oficial */
+
+  /* Apelidos herdados */
+  --color-cream: var(--offwhite);
+  --color-cream-light: var(--white);
+  --color-cream-dark: var(--nude);
+  --color-burgundy: var(--marsala);
+  --color-burgundy-dark: var(--marsala-dark);
+  --color-burgundy-deep: #3d121d;
+  --color-rose: var(--marsala);
+  --color-rose-soft: var(--rose);
+  --color-rose-pale: #f6e9e6;
+
+  /* ---- Tipografia ---- */
+  --font-display: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
+  --font-body: 'Montserrat Variable', 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-script: var(--font-display); /* sem manuscritas: usa o itálico da Cormorant */
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: clamp(1.3rem, 1.15rem + 0.6vw, 1.6rem);
+  --text-xl: clamp(1.75rem, 1.4rem + 1.3vw, 2.5rem);
+  --text-2xl: clamp(2.2rem, 1.6rem + 2.4vw, 3.5rem);
+  --text-3xl: clamp(2.7rem, 1.7rem + 4vw, 5rem);
+
+  /* ---- Espaçamento ---- */
+  --section-y: clamp(4.5rem, 9vw, 9rem);
+  --container-max: 1160px;
+  --container-pad: clamp(1.25rem, 5vw, 2.5rem);
+
+  /* ---- Forma ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-arch: 999px 999px 14px 14px;
+  --radius-pill: 999px;
+  --hairline: 1px solid var(--color-border);
+  --hairline-soft: 1px solid var(--color-border-soft);
+  --shadow-soft: 0 18px 40px -28px rgba(74, 41, 41, 0.28);
+  --shadow-float: 0 10px 26px -14px rgba(74, 41, 41, 0.45);
+
+  /* ---- Movimento: calmo ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur: 300ms;
+  --dur-slow: 800ms;
+
+  /* ---- Layout ---- */
+  --header-h: 72px;
+  --touch: 48px;
+}

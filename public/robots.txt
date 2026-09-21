@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: substituir pelo domínio definitivo
+Sitemap: https://tremdedoce.com.br/sitemap.xml

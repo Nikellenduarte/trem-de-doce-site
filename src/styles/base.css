@@ -1,0 +1,268 @@
+/* ============================================================
+   BASE — reset, tipografia, layout, movimento
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+dl,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--marsala);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::selection {
+  background: var(--rose);
+  color: var(--marsala-dark);
+}
+
+/* ---------- Tipografia ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+  color: var(--brown);
+  text-wrap: balance;
+}
+
+.display em,
+.display i {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--marsala);
+}
+
+.script {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--marsala);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--marsala);
+}
+
+.lead {
+  font-size: var(--text-md);
+  line-height: 1.85;
+  color: var(--color-text-muted);
+  max-width: 54ch;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.small {
+  font-size: var(--text-sm);
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.container--narrow {
+  max-width: 760px;
+}
+
+.section {
+  padding-block: var(--section-y);
+  position: relative;
+}
+
+.section--surface {
+  background: var(--color-surface);
+}
+
+.section--nude {
+  background: var(--nude);
+}
+
+.section--primary {
+  background: var(--marsala);
+  color: var(--offwhite);
+}
+
+.section--primary .display,
+.section--primary .eyebrow {
+  color: var(--offwhite);
+}
+
+.section--primary .display em {
+  color: var(--rose);
+}
+
+.section--primary .lead,
+.section--primary .muted {
+  color: rgba(255, 249, 245, 0.82);
+}
+
+/* Ornamento: linha fina + estrela de quatro pontas (assinatura da marca) */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  color: var(--gold);
+}
+
+.ornament::before,
+.ornament::after {
+  content: '';
+  width: clamp(36px, 8vw, 72px);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.ornament svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Movimento: fade + leve deslocamento vertical ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fade-up {
+  animation: fade-up var(--dur-slow) var(--ease) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

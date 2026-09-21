@@ -1,0 +1,367 @@
+/* ============================================================
+   LAYOUT — logo, header, menu mobile, footer, WhatsApp, abertura
+   ============================================================ */
+
+/* ---------- Logo oficial ---------- */
+.monogram {
+  display: inline-block;
+  aspect-ratio: 188 / 135;
+  color: var(--marsala);
+  line-height: 0;
+}
+
+.wordmark {
+  display: inline-block;
+  aspect-ratio: 361 / 83;
+  color: var(--marsala);
+  line-height: 0;
+}
+
+.wordmark--stacked {
+  aspect-ratio: 219 / 158;
+}
+
+.monogram svg,
+.wordmark svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ---------- Header ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 249, 245, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.header--scrolled {
+  border-bottom-color: var(--color-border-soft);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex: none;
+}
+
+.brand .monogram {
+  width: 40px;
+}
+
+.brand__wordmark {
+  width: 148px;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.9rem);
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--brown);
+  transition: color var(--dur) var(--ease);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.7rem;
+  height: 1px;
+  background: var(--marsala);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+.nav__link:hover {
+  color: var(--marsala);
+}
+
+.nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: none;
+}
+
+.header__cta {
+  display: none;
+}
+
+.menu-toggle {
+  display: grid;
+  place-items: center;
+  width: var(--touch);
+  height: var(--touch);
+  margin-right: -0.6rem;
+  color: var(--marsala);
+}
+
+/* Menu mobile: painel em tela cheia */
+.mobile-menu {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem var(--container-pad) calc(2rem + env(safe-area-inset-bottom));
+  background: var(--offwhite);
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    visibility 0s linear var(--dur);
+}
+
+.mobile-menu--open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.mobile-menu__link {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  color: var(--brown);
+  border-bottom: var(--hairline-soft);
+}
+
+.mobile-menu__footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.mobile-menu__social {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--marsala);
+}
+
+.mobile-menu__social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+@media (min-width: 1120px) {
+  .nav {
+    display: flex;
+  }
+  .header__cta {
+    display: inline-flex;
+  }
+  .menu-toggle,
+  .mobile-menu {
+    display: none;
+  }
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem) 2rem;
+  border-top: var(--hairline-soft);
+  background: var(--offwhite);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.footer__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.footer__wordmark {
+  width: 170px;
+}
+
+.footer__tagline {
+  margin-top: 1.1rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  color: var(--brown);
+  max-width: 18ch;
+}
+
+.footer__heading {
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--marsala);
+}
+
+.footer__list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.footer__list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 36px;
+  transition: color var(--dur) var(--ease);
+}
+
+.footer__list a:hover {
+  color: var(--marsala);
+}
+
+.footer__address {
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.footer__bottom {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: 1.5rem;
+  border-top: var(--hairline-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+@media (min-width: 760px) {
+  .footer__grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+    gap: 3rem;
+  }
+}
+
+/* ---------- WhatsApp flutuante (discreto) ---------- */
+.wa-float {
+  position: fixed;
+  right: 1.1rem;
+  bottom: calc(1.1rem + env(safe-area-inset-bottom));
+  z-index: 45;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--marsala);
+  color: var(--offwhite);
+  box-shadow: var(--shadow-float);
+  transition:
+    transform var(--dur) var(--ease),
+    opacity var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+}
+
+.wa-float:hover {
+  background: var(--marsala-dark);
+}
+
+.wa-float .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.wa-float--hidden {
+  transform: translateY(140%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .wa-float {
+    right: 1.75rem;
+    bottom: 1.75rem;
+  }
+}
+
+/* ---------- Tela de abertura com a logo ---------- */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.4rem;
+  background: var(--offwhite);
+  color: var(--marsala);
+  transition:
+    opacity 0.7s var(--ease),
+    visibility 0s linear 0.7s;
+}
+
+.page-loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__lockup {
+  --name-w: clamp(190px, 56vw, 360px);
+  animation: loader-in 1s var(--ease) both;
+}
+
+@keyframes loader-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__lockup {
+    animation: none;
+  }
+}

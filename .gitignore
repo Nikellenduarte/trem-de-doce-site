@@ -1,0 +1,17 @@
+# dependências e build
+node_modules
+dist
+.wrangler
+
+# sistema / editor
+.DS_Store
+Thumbs.db
+*.local
+.env
+.env.*
+
+# material interno: NÃO vai para o repositório público
+# (PDF do cardápio, CSV exportado da loja, PDF do logo e fontes comerciais
+#  embutidas nele, fotos originais em alta e backups de versões antigas)
+briefing/
+_backups/

@@ -1,0 +1,433 @@
+/* ============================================================
+   CHECKOUT — reserva: formulário, itens do pedido, barra mobile
+   ============================================================ */
+.checkout {
+  scroll-margin-top: calc(var(--header-h) + 8px);
+}
+
+.checkout__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.checkout__panel {
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-strong);
+  padding: 1.25rem;
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
+
+.checkout__panel-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.checkout__panel-title small {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+/* ---------- Formulário ---------- */
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field__label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.field__label em {
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-secondary);
+}
+
+.input {
+  width: 100%;
+  min-height: var(--touch);
+  padding: 0.7rem 0.95rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: #fff;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+
+.input::placeholder {
+  color: rgba(122, 78, 75, 0.55);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-tint-strong);
+}
+
+.input--invalid {
+  border-color: var(--color-error);
+}
+
+textarea.input {
+  min-height: 96px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+input[type='date'].input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field__error {
+  font-size: var(--text-sm);
+  color: var(--color-error);
+}
+
+.field__hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 640px) {
+  .form-grid--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-grid--2 .field--full {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Itens do pedido ---------- */
+.cart-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: var(--hairline);
+  background: var(--color-surface);
+  animation: fade-up var(--dur) var(--ease) both;
+}
+
+.cart-item--highlight {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-tint-strong);
+}
+
+.cart-item__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.cart-item__price {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--color-primary);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cart-item__price.price--unknown {
+  font-family: var(--font-script);
+  font-size: 1rem;
+}
+
+.cart-item__options {
+  grid-column: 1 / -1;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.cart-item__foot {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  padding-top: 0.4rem;
+  border-top: var(--hairline-soft);
+}
+
+.cart-item__remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 32px;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cart-item__remove:hover {
+  color: var(--color-error);
+}
+
+.cart-totals {
+  display: grid;
+  gap: 0.4rem;
+  padding-top: 0.75rem;
+  border-top: var(--hairline);
+  font-size: var(--text-sm);
+}
+
+.cart-totals__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-text-muted);
+}
+
+.cart-totals__row--total {
+  align-items: baseline;
+  padding-top: 0.35rem;
+}
+
+.cart-totals__row--total .summary-total__label {
+  color: var(--color-text-muted);
+}
+
+.cart-totals__row--total .price {
+  font-size: 1.75rem;
+}
+
+.cart-totals__row--total .price--unknown {
+  font-size: 1.3rem;
+}
+
+.cart-empty {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+}
+
+.cart-empty .monogram {
+  width: 72px;
+  opacity: 0.6;
+}
+
+.checkout__actions {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.checkout__legal {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Estado "enviado" */
+.sent {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-strong);
+}
+
+.sent .monogram {
+  width: 90px;
+}
+
+.sent__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+}
+
+.sent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+@media (min-width: 960px) {
+  .checkout__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    gap: 2rem;
+    align-items: start;
+  }
+  .checkout__panel--sticky {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+  .checkout__panel {
+    padding: 1.75rem;
+  }
+}
+
+/* ---------- Pílula do pedido no header ---------- */
+.cart-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 40px;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-strong);
+  color: var(--color-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+
+.cart-pill:hover {
+  background: var(--color-primary-tint);
+  border-color: var(--color-primary);
+}
+
+.cart-pill__count {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 0.35rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0;
+}
+
+.cart-pill__label {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .cart-pill__label {
+    display: inline;
+  }
+}
+
+/* ---------- Barra fixa do pedido (mobile) ---------- */
+.cart-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 46;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem var(--container-pad);
+  padding-bottom: calc(0.7rem + env(safe-area-inset-bottom));
+  background: var(--color-primary);
+  color: var(--color-cream);
+  box-shadow: 0 -8px 24px -12px rgba(67, 9, 9, 0.5);
+  transform: translateY(0);
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+
+.cart-bar--hidden {
+  transform: translateY(110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cart-bar__info {
+  display: grid;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.cart-bar__label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-rose-soft);
+}
+
+.cart-bar__total {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 960px) {
+  .cart-bar {
+    display: none;
+  }
+}
+
+/* Confirmação após adicionar ao pedido */
+.added {
+  display: grid;
+  gap: 1rem;
+  padding: 1.75rem var(--builder-pad, 1.25rem) 2rem;
+}
+
+.added__head {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.added__head .display {
+  font-size: var(--text-xl);
+}
+
+.added__actions {
+  display: grid;
+  gap: 0.6rem;
+}
+
+@media (min-width: 640px) {
+  .added__actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}

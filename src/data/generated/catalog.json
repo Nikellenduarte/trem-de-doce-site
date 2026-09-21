@@ -1,0 +1,321 @@
+{
+  "generatedAt": "2026-09-14T17:22:36.614Z",
+  "source": "briefing/produtos-trem-de-doce.csv",
+  "sizeWeights": {
+    "bento": 0.42,
+    "p": 1.4,
+    "m": 2.3,
+    "g": 3.5,
+    "long": 5.5,
+    "g1": 5.5,
+    "g2": 12
+  },
+  "cakeDescriptions": {
+    "vanilla": "Bolo de festa com massa de baunilha, 4 camadas de massa e 3 de recheio, decoração em buttercream (exceto Bentô e Bolo P). Escolha o tamanho e o sabor nas variações.",
+    "chocolate": "Bolo de festa com massa de chocolate, 4 camadas de massa e 3 de recheio, decoração em buttercream (exceto Bentô e Bolo P). Escolha o tamanho e o sabor nas variações."
+  },
+  "cakeFlavors": [
+    {
+      "id": "cake-c-brigadeiro",
+      "categoryId": "cake",
+      "name": "Brigadeiro",
+      "dough": "chocolate",
+      "tier": "classic",
+      "active": true
+    },
+    {
+      "id": "cake-c-dois-amores",
+      "categoryId": "cake",
+      "name": "Dois Amores",
+      "dough": "chocolate",
+      "tier": "classic",
+      "active": true
+    },
+    {
+      "id": "cake-c-maracuja-com-brigadeiro",
+      "categoryId": "cake",
+      "name": "Maracujá com Brigadeiro",
+      "dough": "chocolate",
+      "tier": "classic",
+      "active": true
+    },
+    {
+      "id": "cake-c-prestigio-de-coco",
+      "categoryId": "cake",
+      "name": "Prestígio de Coco",
+      "dough": "chocolate",
+      "tier": "classic",
+      "active": true
+    },
+    {
+      "id": "cake-c-chocomello",
+      "categoryId": "cake",
+      "name": "Chocomello",
+      "dough": "chocolate",
+      "tier": "premium",
+      "active": true
+    },
+    {
+      "id": "cake-c-ninho-com-nutella",
+      "categoryId": "cake",
+      "name": "Ninho com Nutella",
+      "dough": "chocolate",
+      "tier": "premium",
+      "active": true
+    },
+    {
+      "id": "cake-v-abacaxi-com-coco",
+      "categoryId": "cake",
+      "name": "Abacaxi com Coco",
+      "dough": "vanilla",
+      "tier": "classic",
+      "active": true
+    },
+    {
+      "id": "cake-v-dois-amores",
+      "categoryId": "cake",
+      "name": "Dois Amores",
+      "dough": "vanilla",
+      "tier": "classic",
+      "active": true
+    },
+    {
+      "id": "cake-v-ninho-com-morango",
+      "categoryId": "cake",
+      "name": "Ninho com Morango",
+      "dough": "vanilla",
+      "tier": "classic",
+      "active": true
+    },
+    {
+      "id": "cake-v-doce-de-leite-com-nozes",
+      "categoryId": "cake",
+      "name": "Doce de Leite com Nozes",
+      "dough": "vanilla",
+      "tier": "premium",
+      "active": true
+    },
+    {
+      "id": "cake-v-limao-com-frutas-vermelhas",
+      "categoryId": "cake",
+      "name": "Limão com Frutas Vermelhas",
+      "dough": "vanilla",
+      "tier": "premium",
+      "active": true
+    },
+    {
+      "id": "cake-v-ninho-com-nutella",
+      "categoryId": "cake",
+      "name": "Ninho com Nutella",
+      "dough": "vanilla",
+      "tier": "premium",
+      "active": true
+    },
+    {
+      "id": "cake-v-pistache-com-ninho",
+      "categoryId": "cake",
+      "name": "Pistache com Ninho",
+      "dough": "vanilla",
+      "tier": "premium",
+      "active": true
+    }
+  ],
+  "cakePricing": [
+    {
+      "sizeId": "bento",
+      "tier": "classic",
+      "price": 60
+    },
+    {
+      "sizeId": "bento",
+      "tier": "premium",
+      "price": 60
+    },
+    {
+      "sizeId": "p",
+      "tier": "classic",
+      "price": 140
+    },
+    {
+      "sizeId": "p",
+      "tier": "premium",
+      "price": 155
+    },
+    {
+      "sizeId": "m",
+      "tier": "classic",
+      "price": 200
+    },
+    {
+      "sizeId": "m",
+      "tier": "premium",
+      "price": 225
+    },
+    {
+      "sizeId": "g",
+      "tier": "classic",
+      "price": 320
+    },
+    {
+      "sizeId": "g",
+      "tier": "premium",
+      "price": 360
+    },
+    {
+      "sizeId": "long",
+      "tier": "classic",
+      "price": 550
+    },
+    {
+      "sizeId": "long",
+      "tier": "premium",
+      "price": 630
+    },
+    {
+      "sizeId": "g1",
+      "tier": "classic",
+      "price": 500
+    },
+    {
+      "sizeId": "g1",
+      "tier": "premium",
+      "price": 580
+    },
+    {
+      "sizeId": "g2",
+      "tier": "classic",
+      "price": 900
+    },
+    {
+      "sizeId": "g2",
+      "tier": "premium",
+      "price": 1030
+    }
+  ],
+  "boxPricing": {
+    "brigadeiro": [
+      {
+        "line": "classic",
+        "quantity": 50,
+        "price": 110
+      },
+      {
+        "line": "classic",
+        "quantity": 100,
+        "price": 220
+      },
+      {
+        "line": "special",
+        "quantity": 50,
+        "price": 150
+      },
+      {
+        "line": "special",
+        "quantity": 100,
+        "price": 300
+      }
+    ],
+    "brownie": [
+      {
+        "line": "special",
+        "quantity": 50,
+        "price": 150
+      },
+      {
+        "line": "special",
+        "quantity": 100,
+        "price": 300
+      },
+      {
+        "line": "classic",
+        "quantity": 50,
+        "price": 110
+      },
+      {
+        "line": "classic",
+        "quantity": 100,
+        "price": 220
+      },
+      {
+        "line": "plain",
+        "quantity": 50,
+        "price": 100
+      },
+      {
+        "line": "plain",
+        "quantity": 100,
+        "price": 190
+      }
+    ]
+  },
+  "boxDescriptions": {
+    "brigadeiro": "Brigadeiros gourmet de enrolar, unidades de 15g a 16g. Pedido mínimo de 20 a 25 unidades por sabor. Os sabores disponíveis são escolhidos no campo personalizado da página do produto.",
+    "brownie": "Petit brownies em caixa fechada. Pedido mínimo de 50 unidades, 25 por sabor. Os sabores disponíveis são escolhidos no campo personalizado da página do produto."
+  },
+  "mimos": [
+    {
+      "id": "bem-casado-classico",
+      "categoryId": "mimos",
+      "name": "Bem Casado Clássico",
+      "description": "Lembrancinha 5x5cm. Pedido mínimo de 25 unidades.",
+      "price": 6,
+      "priceFrom": false,
+      "minQuantity": 25,
+      "active": true
+    },
+    {
+      "id": "brownie-com-laco-e-tag",
+      "categoryId": "mimos",
+      "name": "Brownie com Laço e Tag",
+      "description": "Lembrancinha 5x5cm. Pedido mínimo de 25 unidades.",
+      "price": 5.5,
+      "priceFrom": false,
+      "minQuantity": 25,
+      "active": true
+    },
+    {
+      "id": "brownie-com-tag",
+      "categoryId": "mimos",
+      "name": "Brownie com Tag",
+      "description": "Pedido mínimo de 25 unidades.",
+      "price": 4.8,
+      "priceFrom": false,
+      "minQuantity": 25,
+      "active": true
+    },
+    {
+      "id": "caixa-de-brigadeiros",
+      "categoryId": "mimos",
+      "name": "Caixa de Brigadeiros",
+      "description": "Valor a partir de. Pedido mínimo de 12 unidades.",
+      "price": 7.5,
+      "priceFrom": true,
+      "minQuantity": 12,
+      "active": true
+    },
+    {
+      "id": "mini-bolo-individual",
+      "categoryId": "mimos",
+      "name": "Mini Bolo Individual",
+      "description": "Pedido mínimo de 12 unidades.",
+      "price": 16,
+      "priceFrom": false,
+      "minQuantity": 12,
+      "active": true
+    },
+    {
+      "id": "cupcakes",
+      "categoryId": "mimos",
+      "name": "Cupcakes",
+      "description": "Valor a partir de. Pedido mínimo de 12 unidades.",
+      "price": 8,
+      "priceFrom": true,
+      "minQuantity": 12,
+      "active": true
+    }
+  ],
+  "warnings": [
+    "Sabor \"Dois Amores\" existe nas duas massas (vanilla, chocolate).",
+    "Sabor \"Ninho com Nutella\" existe nas duas massas (vanilla, chocolate)."
+  ]
+}
