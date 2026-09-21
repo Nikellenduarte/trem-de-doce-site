@@ -324,32 +324,40 @@
   padding: 1rem 2.6rem 1rem 1.1rem;
   text-align: left;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--white);
-  color: var(--color-text);
+  border: 1px solid var(--marsala);
+  background: var(--marsala); /* mesma cor do botão "Montar meu pedido" (pedido do cliente, 21/09/2026) */
+  color: var(--offwhite);
   transition:
     border-color var(--dur) var(--ease),
-    background-color var(--dur) var(--ease);
+    background-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
 .option:hover:not(:disabled) {
-  border-color: var(--marsala);
+  background: var(--marsala-dark);
+  border-color: var(--marsala-dark);
 }
 
+/* Selecionado: marsala escuro + contorno dourado + marcador preenchido */
 .option[aria-checked='true'],
 .option[aria-pressed='true'] {
-  border-color: var(--marsala);
-  background: var(--color-rose-pale);
+  background: var(--marsala-dark);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold);
 }
 
+/* Indisponível: volta ao claro, para não competir com as opções ativas */
 .option:disabled {
-  opacity: 0.45;
   cursor: not-allowed;
   background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  opacity: 0.6;
 }
 
 .option--invalid {
   border-color: var(--color-error);
+  box-shadow: 0 0 0 2px var(--color-error);
 }
 
 .option__title {
@@ -357,12 +365,12 @@
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.2;
-  color: var(--brown);
+  color: var(--offwhite);
 }
 
 .option__hint {
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 249, 245, 0.84);
   line-height: 1.55;
 }
 
@@ -372,7 +380,13 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--marsala);
+  color: var(--rose);
+}
+
+.option:disabled .option__title,
+.option:disabled .option__hint,
+.option:disabled .option__meta {
+  color: inherit;
 }
 
 /* Selo do cardápio (ex.: "O mais vendido em casamentos") */
@@ -382,11 +396,15 @@
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--gold);
-  color: var(--brown);
+  color: var(--offwhite);
   font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.option:disabled .option__badge {
+  color: inherit;
 }
 
 .option__check {
@@ -396,12 +414,16 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid rgba(255, 249, 245, 0.65);
   display: grid;
   place-items: center;
   transition:
     background-color var(--dur) var(--ease),
     border-color var(--dur) var(--ease);
+}
+
+.option:disabled .option__check {
+  border-color: var(--color-border-strong);
 }
 
 .option__check .icon {
@@ -413,9 +435,9 @@
 
 .option[aria-checked='true'] .option__check,
 .option[aria-pressed='true'] .option__check {
-  background: var(--marsala);
-  border-color: var(--marsala);
-  color: var(--offwhite);
+  background: var(--offwhite);
+  border-color: var(--offwhite);
+  color: var(--marsala-dark);
 }
 
 .option[aria-checked='true'] .option__check .icon,
