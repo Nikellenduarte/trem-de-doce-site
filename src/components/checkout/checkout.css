@@ -431,3 +431,30 @@ input[type='date'].input {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ---------- Celular: nada pode forçar largura maior que a tela ---------- */
+.checkout__grid > *,
+.checkout__panel,
+.checkout__panel > *,
+.field,
+.input,
+.cart-item,
+.cart-item > *,
+.cart-summary,
+.checkout__actions > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.checkout__panel-title {
+  flex-wrap: wrap;
+}
+
+.cart-bar__info {
+  flex: 1 1 auto;
+}
+
+.cart-bar .btn {
+  flex: none;
+  white-space: nowrap;
+}

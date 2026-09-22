@@ -634,3 +634,22 @@
   width: 37%;
   margin-top: calc(var(--name-w) * 0.035);
 }
+
+/* ---------- Celular: nada pode ficar mais largo que a tela ---------- */
+/* Botão de largura total pode quebrar o texto em duas linhas em vez de estourar o cartão. */
+.btn--block {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.35;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+  }
+  .btn--lg {
+    padding-inline: 1.4rem;
+  }
+}

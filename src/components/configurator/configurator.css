@@ -714,3 +714,45 @@
     display: none;
   }
 }
+
+/* ---------- Celular: itens de grid/flex não podem forçar largura (min-width: auto) ---------- */
+.builder__panel > *,
+.builder__body > *,
+.builder__aside-inner,
+.stage,
+.review,
+.review__head,
+.review__card,
+.review__actions,
+.summary-list,
+.summary-list__row,
+.summary-list__row dd,
+.mobile-bar__info {
+  min-width: 0;
+}
+
+.summary-list__row dt {
+  max-width: 45%;
+}
+
+.summary-list__row dd {
+  overflow-wrap: anywhere;
+}
+
+.review__product,
+.summary-total {
+  flex-wrap: wrap;
+}
+
+.mobile-bar .btn {
+  flex: none;
+}
+
+@media (max-width: 480px) {
+  .builder__strip {
+    flex-wrap: wrap;
+  }
+  .builder__strip-link {
+    white-space: normal;
+  }
+}
